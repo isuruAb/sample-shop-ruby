@@ -10,7 +10,7 @@
         name: Faker::Internet.email, 
         password:Faker::Code.imei, 
         last_login: Faker::Time.between(DateTime.now - 1, DateTime.now))
-   end
+end
 User.create!(
 name: "isuru", 
 password:"password", 
