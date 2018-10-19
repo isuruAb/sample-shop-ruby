@@ -14,7 +14,7 @@ development:
   database: sample_shop_db
   username: root
   password: root
-  host: 127.0.0.1
+  host: db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -26,3 +26,10 @@ test:
 production:
   <<: *default
   database: sample_shop_db_prod
+
+localdocker:
+  adapter: mysql2
+  database: sample_shop_docker
+  username: root
+  password:
+  host: db
