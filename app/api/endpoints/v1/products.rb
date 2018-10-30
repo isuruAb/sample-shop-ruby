@@ -15,15 +15,18 @@ module V1
             
             desc "search for products"
             params do
-                
                 requires :name, type: String, desc: "Product Name"
             end
             get :search do
                 authenticate!
                 product = Product.where("name LIKE ?", "%#{params[:name]}%") 
-                present  product
+                processedProducts=[];
+                for i in product do
+                    i[:images]=i[:images].split(",")
+                    processedProducts.push(i)
+                end
+                present  processedProducts
             end
-
         end
     end
 end
