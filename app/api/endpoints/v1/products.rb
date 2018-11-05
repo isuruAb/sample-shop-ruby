@@ -8,7 +8,7 @@ module V1
 
             end
             get :all do
-                authenticate!
+               # authenticate!
                 product = Product.all
                 present  product
             end
@@ -18,14 +18,14 @@ module V1
                 requires :name, type: String, desc: "Product Name"
             end
             get :search do
-                authenticate!
+               # authenticate!
                 product = Product.where("name LIKE ?", "%#{params[:name]}%") 
-                processedProducts=[];
-                for i in product do
-                    i[:images]=i[:images].split(",")
-                    processedProducts.push(i)
-                end
-                present  processedProducts
+                # processedProducts=[];
+                # for i in product do
+                #     i[:images]=i[:images].split(",")
+                #     processedProducts.push(i)
+                # end
+                present  product
             end
         end
     end
