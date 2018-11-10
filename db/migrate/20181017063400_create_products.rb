@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :name, null: false, index: {unique: true}
       t.text :description, null: false
       t.string :tags, null: false
-      t.string :images, null: false
+      t.float :price, null: false
       t.integer :stock, null: false
       t.references :user, foreign_key: true
       t.timestamps

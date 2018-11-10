@@ -10,7 +10,7 @@ module V1
             get :all do
                # authenticate!
                 product = Product.all
-                present  product
+                present  product , with: Entities::Product
             end
             
             desc "search for products"
@@ -25,7 +25,7 @@ module V1
                 #     i[:images]=i[:images].split(",")
                 #     processedProducts.push(i)
                 # end
-                present  product
+                present  product 
             end
         end
     end

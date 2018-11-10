@@ -28,7 +28,16 @@ user_ids=User.ids
         name: Faker::Name.name, 
         description: "Sed vulputate, ligula ut porta pharetra, lorem tellus tempor mi, aliquam blandit nulla mauris et nisl. Pellentesque nec volutpat enim. Donec fermentum ornare gravida. Nam luctus lacus lectus. Donec quis risus ut ante viverra tristique. Nam sagittis nibh vel rhoncus fermentum. In scelerisque, mi vitae egestas efficitur, ipsum urna mattis tellus, sed sodales risus mi id arcu. In hac habitasse platea dictumst.", 
         tags: "gold,white",
-        images: "https://cdn.shopify.com/s/files/1/2201/6013/collections/Jewellery-PS6801-1000-ES6101-2000_350x350_crop_center@2x.jpg?v=1517289436,https://images-eu.ssl-images-amazon.com/images/I/6156in5PV9L._SY300_QL70_.jpg",
+        price: 2000000,
+        # images: "https://cdn.shopify.com/s/files/1/2201/6013/collections/Jewellery-PS6801-1000-ES6101-2000_350x350_crop_center@2x.jpg?v=1517289436,https://images-eu.ssl-images-amazon.com/images/I/6156in5PV9L._SY300_QL70_.jpg",
         stock: 12,
         user_id: 6)
+end
+
+product_ids=Product.ids
+4.times do
+    Image.create!(
+        url:  "https://cdn.shopify.com/s/files/1/2201/6013/collections/Jewellery-PS6801-1000-ES6101-2000_350x350_crop_center@2x.jpg?v=1517289436",
+        product_id: product_ids.sample
+        )
 end
