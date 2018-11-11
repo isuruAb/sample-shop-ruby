@@ -3,16 +3,16 @@ module V1
         format :json
         prefix :api
         resource :products do
-            desc "Get all products"
-            params do
 
+            desc "filter by category"
+            params do
+                optional :tags, type: String, desc: "Tag Name"
             end
             get :all do
-               # authenticate!
-                product = Product.all
+                product = Product.where("tags LIKE ?", "%#{params[:tags]}%") 
                 present  product , with: Entities::Product
             end
-            
+
             desc "search for products"
             params do
                 requires :name, type: String, desc: "Product Name"
@@ -20,13 +20,9 @@ module V1
             get :search do
                # authenticate!
                 product = Product.where("name LIKE ?", "%#{params[:name]}%") 
-                # processedProducts=[];
-                # for i in product do
-                #     i[:images]=i[:images].split(",")
-                #     processedProducts.push(i)
-                # end
                 present  product 
             end
+            
         end
     end
 end

@@ -21,7 +21,12 @@ name: "isuru1",
 password:"password", 
 isAdmin: false,
 last_login: Faker::Time.between(DateTime.now - 1, DateTime.now))
-
+imagesArray=[
+    "https://cdn.shopify.com/s/files/1/2201/6013/collections/Jewellery-PS6801-1000-ES6101-2000_350x350_crop_center@2x.jpg?v=1517289436",
+    "https://images-eu.ssl-images-amazon.com/images/I/6156in5PV9L._SY300_QL70_.jpg",
+    "https://michaellevinjewellers.co.uk/images/Pearl.jpg",
+    "https://5.imimg.com/data5/NE/HQ/MY-1107937/indian-diamond-jewelry-gold-diamond-jewelry-500x500.jpg"
+]
 user_ids=User.ids
 2.times do
     Product.create!(
@@ -37,7 +42,12 @@ end
 product_ids=Product.ids
 4.times do
     Image.create!(
-        url:  "https://cdn.shopify.com/s/files/1/2201/6013/collections/Jewellery-PS6801-1000-ES6101-2000_350x350_crop_center@2x.jpg?v=1517289436",
+        url:  imagesArray.sample,
         product_id: product_ids.sample
         )
 end
+Tag.create!(name: "Gold", )
+Tag.create!(name: "White Gold", )
+Tag.create!(name: "Pink Gold", )
+Tag.create!(name: "Gems", )
+Tag.create!(name: "Diaamonds", )
