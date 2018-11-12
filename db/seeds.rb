@@ -52,3 +52,9 @@ user_ids=User.ids
 
 end
 
+2.times do
+    Banner.create!(
+        name: Faker::Name.name, 
+        url: imagesArray.sample
+    )
+end

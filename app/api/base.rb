@@ -9,6 +9,7 @@ class Base< Grape::API
 	
 	version 'v1', using: :path
 	mount V1::Products
+	mount V1::Banners
 	add_swagger_documentation
 
 end
