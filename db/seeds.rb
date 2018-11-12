@@ -27,27 +27,28 @@ imagesArray=[
     "https://michaellevinjewellers.co.uk/images/Pearl.jpg",
     "https://5.imimg.com/data5/NE/HQ/MY-1107937/indian-diamond-jewelry-gold-diamond-jewelry-500x500.jpg"
 ]
+
+tagsArray=[
+    "Gold",
+    "White Gold",
+    "Pink Gold",
+    "Gems",
+    "Diamonds",
+    "Silver"
+]
 user_ids=User.ids
 2.times do
-    Product.create!(
+    p1=Product.create!(
         name: Faker::Name.name, 
         description: "Sed vulputate, ligula ut porta pharetra, lorem tellus tempor mi, aliquam blandit nulla mauris et nisl. Pellentesque nec volutpat enim. Donec fermentum ornare gravida. Nam luctus lacus lectus. Donec quis risus ut ante viverra tristique. Nam sagittis nibh vel rhoncus fermentum. In scelerisque, mi vitae egestas efficitur, ipsum urna mattis tellus, sed sodales risus mi id arcu. In hac habitasse platea dictumst.", 
-        tags: "gold,white",
         price: 2000000,
         # images: "https://cdn.shopify.com/s/files/1/2201/6013/collections/Jewellery-PS6801-1000-ES6101-2000_350x350_crop_center@2x.jpg?v=1517289436,https://images-eu.ssl-images-amazon.com/images/I/6156in5PV9L._SY300_QL70_.jpg",
         stock: 12,
         user_id: 6)
+    p1.tag.create(name: tagsArray.sample)
+    p1.tag.create(name: tagsArray.sample)
+    p1.image.create(url: imagesArray.sample)
+    p1.image.create(url: imagesArray.sample)
+
 end
 
-product_ids=Product.ids
-4.times do
-    Image.create!(
-        url:  imagesArray.sample,
-        product_id: product_ids.sample
-        )
-end
-Tag.create!(name: "Gold", )
-Tag.create!(name: "White Gold", )
-Tag.create!(name: "Pink Gold", )
-Tag.create!(name: "Gems", )
-Tag.create!(name: "Diaamonds", )

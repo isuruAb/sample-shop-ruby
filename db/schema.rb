@@ -25,19 +25,9 @@ ActiveRecord::Schema.define(version: 2018_11_11_143805) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_product_tags_on_product_id"
-    t.index ["tag_id"], name: "index_product_tags_on_tag_id"
-  end
-
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.string "tags", null: false
     t.float "price", null: false
     t.integer "stock", null: false
     t.bigint "user_id"
@@ -45,6 +35,15 @@ ActiveRecord::Schema.define(version: 2018_11_11_143805) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "products_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_products_tags_on_product_id"
+    t.index ["tag_id"], name: "index_products_tags_on_tag_id"
   end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,7 +64,7 @@ ActiveRecord::Schema.define(version: 2018_11_11_143805) do
   end
 
   add_foreign_key "images", "products"
-  add_foreign_key "product_tags", "products"
-  add_foreign_key "product_tags", "tags"
   add_foreign_key "products", "users"
+  add_foreign_key "products_tags", "products"
+  add_foreign_key "products_tags", "tags"
 end
