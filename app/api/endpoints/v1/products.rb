@@ -26,7 +26,8 @@ module V1
                 product = Product.where("name LIKE ?", "%#{params[:name]}%") 
                 present  product 
             end
-            
+
+
         end
     end
 end
