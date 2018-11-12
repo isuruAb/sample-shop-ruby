@@ -9,8 +9,12 @@ module V1
                 optional :tags, type: String, desc: "Tag Name"
             end
             get :all do
-                product = Product.where("tags LIKE ?", "%#{params[:tags]}%") 
-                present  product , with: Entities::Product
+              if(params[:tags]!=nil)
+                  product = Product.joins(:tag).where(tags: {name: params[:tags]}).distinct
+              else
+                  product = Product.joins(:tag).distinct
+              end
+              present product, with: Entities::Product
             end
 
             desc "search for products"

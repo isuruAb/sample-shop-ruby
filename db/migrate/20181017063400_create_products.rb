@@ -3,7 +3,6 @@ class CreateProducts < ActiveRecord::Migration[5.2]
     create_table :products do |t|
       t.string :name, null: false, index: {unique: true}
       t.text :description, null: false
-      t.string :tags, null: false
       t.float :price, null: false
       t.integer :stock, null: false
       t.references :user, foreign_key: true
